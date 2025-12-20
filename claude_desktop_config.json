@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "rag-knowledge": {
+      "command": "python",
+      "args": [
+        "/absolute/path/to/rag_knowledge_mcp.py"
+      ],
+      "env": {
+        "PYTHONPATH": "/absolute/path/to/your/project",
+        "LOG_LEVEL": "INFO"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+# MCP Server Dependencies
+mcp>=1.1.0
+
+# HTTP client for API calls (if needed)
+httpx>=0.27.0
+
+# Optional: Add your specific RAG dependencies here
+# Examples (uncomment and install based on your stack):
+
+# Vector Databases
+# chromadb>=0.4.0
+# pinecone-client>=3.0.0
+# qdrant-client>=1.7.0
+# weaviate-client>=4.4.0
+
+# Embedding Models
+# openai>=1.0.0
+# sentence-transformers>=2.3.0
+# cohere>=4.0.0
+
+# Document Processing
+# pypdf>=3.17.0
+# python-docx>=1.1.0
+# beautifulsoup4>=4.12.0
+# markdown>=3.5.0
+
+# Text Chunking
+# langchain>=0.1.0
+# llama-index>=0.9.0
