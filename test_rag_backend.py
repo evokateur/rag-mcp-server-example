@@ -30,7 +30,7 @@ async def test_rag_backend():
     except ImportError as e:
         print(f"✗ Failed to import RAGBackend: {e}")
         print("\nMake sure you've installed dependencies:")
-        print("  pip install chromadb sentence-transformers")
+        print("  uv sync")
         return
     
     # Initialize backend

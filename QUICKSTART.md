@@ -7,8 +7,10 @@ Get your RAG MCP server running in 5 minutes!
 ### 1. Install Dependencies
 
 ```bash
-pip install mcp chromadb sentence-transformers
+uv sync
 ```
+
+This will create a `.venv` and install all dependencies from `pyproject.toml`.
 
 ### 2. Update the Server File
 
@@ -60,7 +62,7 @@ EOF
 ### 3. Test It
 
 ```bash
-python test_rag_backend.py
+uv run python test_rag_backend.py
 ```
 
 You should see all tests passing ✓
@@ -77,8 +79,14 @@ Add this configuration (update the path!):
 {
   "mcpServers": {
     "rag-knowledge": {
-      "command": "python",
-      "args": ["/FULL/PATH/TO/rag_knowledge_mcp.py"]
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/FULL/PATH/TO/rag-mcp-server",
+        "python",
+        "rag_knowledge_mcp.py"
+      ]
     }
   }
 }
@@ -115,24 +123,24 @@ Search my knowledge base for information about RAG
 Pick your vector database and embedding model:
 
 **Vector Databases:**
+
 - Chroma (easiest, local-first)
 - Pinecone (managed, scalable)
 - Qdrant (fast, feature-rich)
 - FAISS (Facebook's library)
 
 **Embedding Models:**
+
 - Sentence Transformers (free, local)
 - OpenAI (paid, high quality)
 - Cohere (paid, specialized)
 
 ### 2. Install Dependencies
 
-```bash
-# Example for Chroma + Sentence Transformers
-pip install mcp chromadb sentence-transformers
+Edit `pyproject.toml` to add your chosen dependencies, then:
 
-# Or for Pinecone + OpenAI
-pip install mcp pinecone-client openai
+```bash
+uv sync
 ```
 
 ### 3. Implement RAGBackend Methods
@@ -166,7 +174,7 @@ Use the example implementation as a reference!
 ### 4. Test Your Implementation
 
 ```bash
-python test_rag_backend.py
+uv run python test_rag_backend.py
 ```
 
 Fix any errors until all tests pass.
@@ -180,19 +188,20 @@ Same as Option 1, steps 4-6.
 ### "ModuleNotFoundError: No module named 'mcp'"
 
 ```bash
-pip install mcp
+uv sync
 ```
 
 ### "Server won't start" or "Connection failed"
 
 1. Test the server directly:
+
    ```bash
-   python rag_knowledge_mcp.py
+   uv run python rag_knowledge_mcp.py
    ```
 
 2. Check logs in Claude Desktop (Help > Show Logs)
 
-3. Verify your config file path is absolute (not relative)
+3. Verify your config file uses the full path to your project directory
 
 ### "No results found" when searching
 
@@ -202,11 +211,16 @@ pip install mcp
 
 ### Import errors with Chroma
 
-```bash
-# Reinstall with specific version
-pip uninstall chromadb
-pip install chromadb==0.4.22
+Edit `pyproject.toml` to pin a specific version:
+
+```toml
+dependencies = [
+    "chromadb==0.4.22",
+    # ...
+]
 ```
+
+Then run `uv sync`
 
 ## Next Steps
 
