@@ -63,7 +63,7 @@ async def test_rag_backend():
             "metadata": {
                 "source": "ml_basics.txt",
                 "author": "AI Researcher",
-                "tags": ["machine-learning", "ai", "basics"],
+                "tags": "machine-learning, ai, basics",
                 "created_at": datetime.now().isoformat()
             }
         },
@@ -77,7 +77,7 @@ async def test_rag_backend():
             "metadata": {
                 "source": "python_intro.txt",
                 "author": "Developer",
-                "tags": ["python", "programming", "development"],
+                "tags": "python, programming, development",
                 "created_at": datetime.now().isoformat()
             }
         },
@@ -91,7 +91,7 @@ async def test_rag_backend():
             "metadata": {
                 "source": "vector_db_guide.txt",
                 "author": "Database Expert",
-                "tags": ["vector-database", "rag", "embeddings"],
+                "tags": "vector-database, rag, embeddings",
                 "created_at": datetime.now().isoformat()
             }
         }
