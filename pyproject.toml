@@ -2,12 +2,11 @@
 name = "rag-knowledge-mcp"
 version = "0.1.0"
 description = "RAG Knowledge Base MCP Server"
-requires-python = ">=3.10"
+requires-python = ">=3.12,<3.13"
 dependencies = [
     "mcp>=1.1.0",
     "chromadb>=0.4.0",
     "sentence-transformers>=2.3.0",
-    "torch==2.2.2",
 ]
 
 [build-system]
