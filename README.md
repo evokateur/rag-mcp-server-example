@@ -59,23 +59,25 @@ This MCP server provides a clean interface for RAG functionality while keeping t
 ### 1. Install Dependencies
 
 ```bash
-pip install -r requirements.txt
+uv sync
 ```
 
 ### 2. Add Your RAG Dependencies
 
-Edit `requirements.txt` and uncomment/add the dependencies for your chosen stack. For example:
+Edit `pyproject.toml` and add dependencies for your chosen stack. For example:
 
-```bash
-# For Chroma + Sentence Transformers
-pip install chromadb sentence-transformers
-
-# For Pinecone + OpenAI
-pip install pinecone-client openai
-
-# For document processing
-pip install pypdf python-docx beautifulsoup4
+```toml
+dependencies = [
+    "mcp>=1.1.0",
+    "chromadb>=0.4.0",
+    "sentence-transformers>=2.3.0",
+    # Add your stack here
+    # "pinecone-client>=3.0.0",
+    # "openai>=1.0.0",
+]
 ```
+
+Then run `uv sync` to install.
 
 ### 3. Implement the RAG Backend
 
@@ -347,7 +349,7 @@ class RAGBackend:
 ### Test Server Startup
 
 ```bash
-python rag_knowledge_mcp.py --help
+uv run python rag_knowledge_mcp.py --help
 ```
 
 ### Test with MCP Inspector
@@ -414,14 +416,14 @@ Use the inspector to call tools manually:
 ### Server won't start
 
 ```bash
-# Check Python version (3.9+)
+# Check Python version (3.10+)
 python --version
 
 # Verify all dependencies installed
-pip install -r requirements.txt
+uv sync
 
 # Check for import errors
-python -c "from mcp.server.fastmcp import FastMCP"
+uv run python -c "from mcp.server.fastmcp import FastMCP"
 ```
 
 ### Claude can't connect
@@ -529,6 +531,7 @@ MIT License - feel free to use and modify for your projects.
 ## Support
 
 For issues with:
+
 - **MCP protocol**: See [MCP docs](https://modelcontextprotocol.io/)
 - **This template**: File an issue or adapt as needed
 - **Your RAG implementation**: Consult your vector DB/embedding model docs

@@ -11,7 +11,7 @@ adapt for your specific needs. It demonstrates:
 - Proper async patterns
 
 To use this implementation:
-1. pip install chromadb sentence-transformers
+1. uv sync
 2. Replace the RAGBackend class in rag_knowledge_mcp.py with this one
 """
 

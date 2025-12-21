@@ -1,6 +1,6 @@
 # RAG MCP Server - Project Summary
 
-## 🎉 Your RAG MCP Server is Ready!
+## 🎉 Your RAG MCP Server is Ready
 
 I've created a complete, production-ready MCP server for integrating your RAG knowledge base with Claude Desktop and Claude Code.
 
@@ -26,7 +26,7 @@ I've created a complete, production-ready MCP server for integrating your RAG kn
    - Comprehensive testing script
    - Tests all backend methods independently
    - Helpful for debugging your implementation
-   - Run with: `python test_rag_backend.py`
+   - Run with: `uv run python test_rag_backend.py`
 
 ### Documentation
 
@@ -46,9 +46,9 @@ I've created a complete, production-ready MCP server for integrating your RAG kn
 
 ### Configuration
 
-6. **requirements.txt**
-   - Core dependencies (mcp, httpx)
-   - Commented examples for common stacks
+6. **pyproject.toml**
+   - Core dependencies (mcp, chromadb, sentence-transformers, torch)
+   - Managed by uv for automatic virtual environment setup
    - Add your specific dependencies here
 
 7. **claude_desktop_config.json**
@@ -92,13 +92,13 @@ Once configured, Claude will have access to these tools:
 
 ```bash
 # 1. Install dependencies
-pip install mcp chromadb sentence-transformers
+uv sync
 
 # 2. Copy example backend into main server
 # (See QUICKSTART.md for details)
 
 # 3. Test it
-python test_rag_backend.py
+uv run python test_rag_backend.py
 
 # 4. Configure Claude Desktop
 # Edit ~/Library/Application Support/Claude/claude_desktop_config.json
@@ -112,14 +112,14 @@ python test_rag_backend.py
 ```bash
 # 1. Choose your stack (Pinecone, Qdrant, etc.)
 
-# 2. Install dependencies
-pip install mcp [your-vector-db] [your-embedding-model]
+# 2. Edit pyproject.toml to add dependencies, then:
+uv sync
 
 # 3. Implement RAGBackend methods in rag_knowledge_mcp.py
 # Use example_chroma_backend.py as reference
 
 # 4. Test your implementation
-python test_rag_backend.py
+uv run python test_rag_backend.py
 
 # 5. Configure and use
 ```
@@ -127,11 +127,13 @@ python test_rag_backend.py
 ## 🎯 Design Highlights
 
 ### Pluggable Architecture
+
 - RAGBackend interface separates MCP layer from RAG implementation
 - Swap vector DBs, embeddings, chunking without touching MCP code
 - Clean separation of concerns
 
 ### Production-Ready
+
 - Comprehensive error handling
 - Proper logging (to stderr for stdio transport)
 - Progress reporting for long operations
@@ -140,11 +142,13 @@ python test_rag_backend.py
 - Follows MCP best practices
 
 ### Flexible Response Formats
+
 - Markdown for human readability (default)
 - JSON for programmatic use
 - Easy to extend with additional formats
 
 ### Well-Documented
+
 - Extensive docstrings on every method
 - Multiple examples in README
 - Clear parameter descriptions
@@ -199,8 +203,9 @@ All easily customizable in your RAGBackend implementation:
 ## 📝 Next Steps
 
 1. **Test the example implementation**
+
    ```bash
-   python test_rag_backend.py
+   uv run python test_rag_backend.py
    ```
 
 2. **Configure Claude Desktop**
@@ -208,6 +213,7 @@ All easily customizable in your RAGBackend implementation:
    - Copy to: `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS)
 
 3. **Add your first documents**
+
    ```
    Add this to my knowledge base:
    [your content here]
@@ -216,6 +222,7 @@ All easily customizable in your RAGBackend implementation:
    ```
 
 4. **Try searching**
+
    ```
    Search my knowledge base for information about [topic]
    ```
@@ -228,33 +235,36 @@ All easily customizable in your RAGBackend implementation:
 ## 🐛 Troubleshooting
 
 ### Server won't start
+
 ```bash
 # Test directly
-python rag_knowledge_mcp.py
+uv run python rag_knowledge_mcp.py
 
-# Check Python version (need 3.9+)
+# Check Python version (need 3.10+)
 python --version
 ```
 
 ### No results from search
+
 - Lower score_threshold to 0.0
 - Verify documents are added: `rag_list_documents`
 - Check embedding model loaded correctly
 
 ### Import errors
+
 ```bash
 # Reinstall dependencies
-pip install --upgrade mcp chromadb sentence-transformers
+uv sync
 ```
 
 See README.md for more troubleshooting tips.
 
 ## 📚 Resources
 
-- **MCP Protocol**: https://modelcontextprotocol.io/
-- **FastMCP SDK**: https://github.com/modelcontextprotocol/python-sdk
-- **Chroma**: https://docs.trychroma.com/
-- **Sentence Transformers**: https://www.sbert.net/
+- **MCP Protocol**: <https://modelcontextprotocol.io/>
+- **FastMCP SDK**: <https://github.com/modelcontextprotocol/python-sdk>
+- **Chroma**: <https://docs.trychroma.com/>
+- **Sentence Transformers**: <https://www.sbert.net/>
 
 ## ✨ Features You Might Want to Add
 
