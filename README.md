@@ -112,10 +112,16 @@ Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_
 {
   "mcpServers": {
     "rag-knowledge": {
-      "command": "python",
-      "args": ["/path/to/rag_knowledge_mcp.py"],
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/absolute/path/to/your/project",
+        "python",
+        "rag_knowledge_mcp.py"
+      ],
       "env": {
-        "PYTHONPATH": "/path/to/your/project"
+        "LOG_LEVEL": "INFO"
       }
     }
   }
@@ -130,8 +136,17 @@ Create or update `~/.config/claude-code/mcp_config.json`:
 {
   "mcpServers": {
     "rag-knowledge": {
-      "command": "python",
-      "args": ["/path/to/rag_knowledge_mcp.py"]
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/absolute/path/to/your/project",
+        "python",
+        "rag_knowledge_mcp.py"
+      ],
+      "env": {
+        "LOG_LEVEL": "INFO"
+      }
     }
   }
 }
